@@ -1,7 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:trip_advisor_app/core/constants/app/app_constants.dart';
 import 'package:trip_advisor_app/core/init/lang/language_manager.dart';
+import 'package:trip_advisor_app/core/init/notifier/app_provider.dart';
+import 'package:trip_advisor_app/core/init/notifier/theme_notifier.dart';
+import 'package:trip_advisor_app/view/onboard/view/onboard_view.dart';
 
 void main() => runApp(
       EasyLocalization(
@@ -16,15 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+    return MultiProvider(
+      providers: [...ApplicationProvider.instance.dependItems],
+      child: MaterialApp(
+        theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
+        home: OnboardView(),
       ),
     );
   }

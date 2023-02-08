@@ -35,6 +35,7 @@ dependencies:
   # State Management
   mobx: ^2.1.3+1
   flutter_mobx: ^2.0.6+5 
+  provider: 
 
   # Localization 
   easy_localization: 
