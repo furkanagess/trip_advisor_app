@@ -1,22 +1,30 @@
-// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trip_advisor_app/core/constants/enums/locale_keys_enum.dart';
+import 'package:trip_advisor_app/core/init/lang/locale_keys.g.dart';
 
-// class LocaleManager {
-//   static LocaleManager _instance = LocaleManager._init();
+class LocaleManager {
+  LocaleManager._init() {
+    SharedPreferences.getInstance().then((value) {
+      _preferences = value;
+    });
+  }
+  static final LocaleManager _instance = LocaleManager._init();
 
-//   SharedPreferences _preferences;
+  SharedPreferences? _preferences;
 
-//   static LocaleManager get instance => _instance;
-// ***********ERROR**********
-//   LocaleManager._init() {
-//     SharedPreferences.getInstance().then((value) {
-//       _preferences = value;
-//     });
-//   }
+  static LocaleManager get instance => _instance;
 
-//   static preferencesInit() async {
-//     if (instance._preferences == null) {
-//       instance._preferences = await SharedPreferences.getInstance();
-//     }
-//     return;
-//   }
-// }
+  static Future prefrencesInit() async {
+    instance._preferences ??= await SharedPreferences.getInstance();
+  }
+
+  void setString(PreferencesKeys key, String value) async {
+    await _preferences?.setString(key.toString(), value);
+  }
+
+  Future<void> setStringValue(PreferencesKeys key, String value) async {
+    await _preferences!.setString(key.toString(), value);
+  }
+
+  String getStringValue(PreferencesKeys key) => _preferences?.getString(key.toString()) ?? '';
+}
