@@ -4,9 +4,7 @@ import 'package:trip_advisor_app/core/constants/navigation/navigation_constants.
 class NavigationRoute {
   static NavigationRoute? _instance;
   static NavigationRoute get instance {
-    if (_instance != null) return _instance!;
-
-    _instance = NavigationRoute._init();
+    _instance ??= NavigationRoute._init();
     return _instance!;
   }
 

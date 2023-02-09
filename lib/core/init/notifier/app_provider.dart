@@ -6,9 +6,7 @@ import 'package:trip_advisor_app/core/init/notifier/theme_notifier.dart';
 class ApplicationProvider {
   static ApplicationProvider? _instance;
   static ApplicationProvider get instance {
-    if (_instance != null) return _instance!;
-
-    _instance = ApplicationProvider._init();
+    _instance ??= ApplicationProvider._init();
     return _instance!;
   }
 

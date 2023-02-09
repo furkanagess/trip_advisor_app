@@ -4,9 +4,7 @@ import 'package:trip_advisor_app/core/init/theme/app_theme.dart';
 class AppThemeLight extends AppTheme {
   static AppThemeLight? _instance;
   static AppThemeLight get instance {
-    if (_instance != null) return _instance!;
-
-    _instance = AppThemeLight._init();
+    _instance ??= AppThemeLight._init();
     return _instance!;
   }
 

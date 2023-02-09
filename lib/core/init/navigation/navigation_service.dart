@@ -4,9 +4,7 @@ import 'package:trip_advisor_app/core/init/navigation/INavigationService.dart';
 class NavigationService implements INavigationService {
   static NavigationService? _instance;
   static NavigationService get instance {
-    if (_instance != null) return _instance!;
-
-    _instance = NavigationService._init();
+    _instance ??= NavigationService._init();
     return _instance!;
   }
 
