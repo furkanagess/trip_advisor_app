@@ -36,6 +36,8 @@ dependencies:
   mobx: ^2.1.3+1
   flutter_mobx: ^2.0.6+5 
   provider: 
+  mobx_codegen: 
+  build_runner: 
 
   # Localization 
   easy_localization: 
@@ -45,6 +47,9 @@ dependencies:
 
   # Network
   dio: 
+
+  # Serializable
+  json_serializable: 
 
 
   # The following adds the Cupertino Icons font to your application.
