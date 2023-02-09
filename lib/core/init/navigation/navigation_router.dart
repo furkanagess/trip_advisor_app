@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:trip_advisor_app/core/constants/navigation/navigation_constants.dart';
-import 'package:trip_advisor_app/view/onboard/view/onboard_view.dart';
 
 class NavigationRoute {
   static NavigationRoute? _instance;
@@ -16,7 +15,9 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.ONBOARD:
-        return normalNavigate(OnboardView());
+        return normalNavigate(
+          Scaffold(),
+        );
     }
     return MaterialPageRoute(
       builder: (context) => Scaffold(

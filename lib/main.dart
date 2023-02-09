@@ -8,7 +8,6 @@ import 'package:trip_advisor_app/core/init/navigation/navigation_router.dart';
 import 'package:trip_advisor_app/core/init/navigation/navigation_service.dart';
 import 'package:trip_advisor_app/core/init/notifier/app_provider.dart';
 import 'package:trip_advisor_app/core/init/notifier/theme_notifier.dart';
-import 'package:trip_advisor_app/view/onboard/view/onboard_view.dart';
 
 void main() {
   LocaleManager.prefrencesInit();
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: OnboardView(),
+      home: Scaffold(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );
