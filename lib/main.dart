@@ -15,9 +15,10 @@ void main() {
     MultiProvider(
       providers: [...ApplicationProvider.instance.dependItems],
       child: EasyLocalization(
-        child: MyApp(),
         supportedLocales: LanguageManager.instance.supportedLocales,
         path: ApplicationConstants.LANG_ASSET_PATH,
+        startLocale: LanguageManager.instance.enLocale,
+        child: MyApp(),
       ),
     ),
   );
@@ -29,10 +30,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: Scaffold(),
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates, // Localization
+      locale: LanguageManager.instance.enLocale,
+      supportedLocales: LanguageManager.instance.supportedLocales,
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
+      theme: context.watch<ThemeNotifier>().currentTheme,
+      home: Scaffold(),
     );
   }
 }
