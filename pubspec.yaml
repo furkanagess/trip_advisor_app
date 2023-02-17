@@ -37,7 +37,6 @@ dependencies:
   flutter_mobx: ^2.0.6+5 
   provider: 
   mobx_codegen: 
-  build_runner: 
 
   # Localization 
   easy_localization: 
@@ -51,6 +50,8 @@ dependencies:
   # Serializable
   json_serializable: 
 
+  introduction_screen: 
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -59,6 +60,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+ 
+  build_runner: 
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -81,6 +85,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/lang/
+    - assets/svg/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
