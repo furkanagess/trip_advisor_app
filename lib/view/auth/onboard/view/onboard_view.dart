@@ -69,31 +69,39 @@ class OnboardView extends StatelessWidget {
       children: [
         Expanded(
           flex: 2,
-          child: ListView.builder(
-            itemCount: 3,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return Observer(
-                builder: (_) {
-                  return OnBoardCircle(isSelected: viewModel.currentIndex == index);
-                },
-              );
-            },
-          ),
+          child: buildCircle(viewModel),
         ),
-        FloatingActionButton(
-          elevation: 10,
-          backgroundColor: context.colors.onSecondary,
-          child: Text(
-            LocaleKeys.onBoard_skip.locale,
-            style: context.textTheme.bodyText2?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: context.colors.background,
-            ),
-          ),
-          onPressed: () {},
-        )
+        buildSkipButton(context)
       ],
+    );
+  }
+
+  ListView buildCircle(OnboardViewModel viewModel) {
+    return ListView.builder(
+      itemCount: 3,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
+        return Observer(
+          builder: (_) {
+            return OnBoardCircle(isSelected: viewModel.currentIndex == index);
+          },
+        );
+      },
+    );
+  }
+
+  FloatingActionButton buildSkipButton(BuildContext context) {
+    return FloatingActionButton(
+      elevation: 10,
+      backgroundColor: context.colors.onSecondary,
+      child: Text(
+        LocaleKeys.onBoard_skip.locale,
+        style: context.textTheme.bodyText2?.copyWith(
+          fontWeight: FontWeight.bold,
+          color: context.colors.background,
+        ),
+      ),
+      onPressed: () {},
     );
   }
 

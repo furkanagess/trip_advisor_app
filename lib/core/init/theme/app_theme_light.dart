@@ -23,8 +23,8 @@ class AppThemeLight extends AppTheme {
         onSecondary: Color(0xFF6c63ff), // used
         error: Colors.red,
         onError: Colors.orange,
-        background: Colors.white,
-        onBackground: Colors.grey,
+        background: Colors.white, // used
+        onBackground: Colors.grey, // used
         surface: Colors.yellow,
         onSurface: Colors.pink,
       );
