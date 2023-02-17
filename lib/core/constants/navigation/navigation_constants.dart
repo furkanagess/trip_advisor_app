@@ -1,4 +1,4 @@
 class NavigationConstants {
   static const ONBOARD = "/onboard";
-  static const LOGIN = "/login";
+  static const LOGIN_VIEW = "/login";
 }

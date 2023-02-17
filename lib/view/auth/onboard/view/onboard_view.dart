@@ -71,7 +71,7 @@ class OnboardView extends StatelessWidget {
           flex: 2,
           child: buildCircle(viewModel),
         ),
-        buildSkipButton(context)
+        buildSkipButton(context, viewModel)
       ],
     );
   }
@@ -90,7 +90,7 @@ class OnboardView extends StatelessWidget {
     );
   }
 
-  FloatingActionButton buildSkipButton(BuildContext context) {
+  FloatingActionButton buildSkipButton(BuildContext context, OnboardViewModel viewModel) {
     return FloatingActionButton(
       elevation: 10,
       backgroundColor: context.colors.onSecondary,
@@ -101,7 +101,9 @@ class OnboardView extends StatelessWidget {
           color: context.colors.background,
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        viewModel.navigateToLogin();
+      },
     );
   }
 

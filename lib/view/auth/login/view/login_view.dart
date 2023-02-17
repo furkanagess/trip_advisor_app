@@ -12,7 +12,13 @@ class LoginView extends StatelessWidget {
       onModelReady: (model) {
         model.setContext(context);
       },
-      onPageBuilder: (context, value) => Scaffold(),
+      onPageBuilder: (context, value) => Scaffold(
+        body: Column(
+          children: [
+            Text("data"),
+          ],
+        ),
+      ),
     );
   }
 }
