@@ -24,8 +24,8 @@ class AppThemeLight extends AppTheme {
         error: Colors.red,
         onError: Colors.orange,
         background: Colors.white,
-        onBackground: Colors.white54,
+        onBackground: Colors.grey,
         surface: Colors.yellow,
-        onSurface: Colors.pink,
+        onSurface: Colors.purple,
       );
 }

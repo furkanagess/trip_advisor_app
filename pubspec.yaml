@@ -50,7 +50,10 @@ dependencies:
   # Serializable
   json_serializable: 
 
+  # UI Utilites
+  flutter_svg: 
   introduction_screen: 
+  auto_size_text:
 
 
   # The following adds the Cupertino Icons font to your application.
