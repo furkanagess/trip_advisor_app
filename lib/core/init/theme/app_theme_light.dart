@@ -20,12 +20,12 @@ class AppThemeLight extends AppTheme {
         primary: Colors.blue.shade900,
         onPrimary: Colors.blue,
         secondary: Colors.black,
-        onSecondary: Colors.black45,
+        onSecondary: Color(0xFF6c63ff), // used
         error: Colors.red,
         onError: Colors.orange,
         background: Colors.white,
         onBackground: Colors.grey,
         surface: Colors.yellow,
-        onSurface: Colors.purple,
+        onSurface: Colors.pink,
       );
 }

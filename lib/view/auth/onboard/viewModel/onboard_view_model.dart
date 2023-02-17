@@ -15,6 +15,14 @@ abstract class _OnboardViewModelBase with Store, BaseViewModel {
 
   List<OnBoardModel> onBoardPages = [];
 
+  @observable
+  int currentIndex = 0;
+
+  @action
+  void changeCurrentIndex(int value) {
+    currentIndex = value;
+  }
+
   @override
   void init() {
     onBoardPages.addAll(

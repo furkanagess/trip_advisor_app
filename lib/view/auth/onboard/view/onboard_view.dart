@@ -1,10 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:mobx/mobx.dart';
 import 'package:trip_advisor_app/core/base/view/base_view.dart';
 import 'package:trip_advisor_app/core/constants/svg/svg_constants.dart';
 import 'package:trip_advisor_app/core/extension/context_extension.dart';
+import 'package:trip_advisor_app/core/extension/string_extension.dart';
+import 'package:trip_advisor_app/core/init/lang/locale_keys.g.dart';
+import 'package:trip_advisor_app/core/widget/avatar/onboard_circle.dart';
 import 'package:trip_advisor_app/view/auth/onboard/model/onboard_model.dart';
 import 'package:trip_advisor_app/view/auth/onboard/viewModel/onboard_view_model.dart';
 
@@ -30,52 +35,65 @@ class OnboardView extends StatelessWidget {
               ),
               Expanded(
                 flex: 7,
-                child: PageView.builder(
-                  itemCount: viewModel.onBoardPages.length,
-                  itemBuilder: (context, index) {
-                    return buildColumnBody(context, viewModel.onBoardPages[index]);
-                  },
-                ),
+                child: buildPageView(viewModel),
               ),
               Expanded(
                 flex: 2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: ListView.builder(
-                        itemCount: 3,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: context.paddingLow,
-                            child: CircleAvatar(
-                              radius: 10.0,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    FloatingActionButton(
-                      elevation: 0,
-                      backgroundColor: context.colors.onSurface,
-                      child: Text(
-                        "Skip",
-                        style: context.textTheme.bodyText2?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: context.colors.background,
-                        ),
-                      ),
-                      onPressed: () {},
-                    )
-                  ],
-                ),
+                child: buildRowFooter(viewModel, context),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  PageView buildPageView(OnboardViewModel viewModel) {
+    return PageView.builder(
+      onPageChanged: (value) {
+        viewModel.changeCurrentIndex(value);
+      },
+      itemCount: viewModel.onBoardPages.length,
+      itemBuilder: (context, index) {
+        return buildColumnBody(
+          context,
+          viewModel.onBoardPages[index],
+        );
+      },
+    );
+  }
+
+  Row buildRowFooter(OnboardViewModel viewModel, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 2,
+          child: ListView.builder(
+            itemCount: 3,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return Observer(
+                builder: (_) {
+                  return OnBoardCircle(isSelected: viewModel.currentIndex == index);
+                },
+              );
+            },
+          ),
+        ),
+        FloatingActionButton(
+          elevation: 10,
+          backgroundColor: context.colors.onSecondary,
+          child: Text(
+            LocaleKeys.onBoard_skip.locale,
+            style: context.textTheme.bodyText2?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: context.colors.background,
+            ),
+          ),
+          onPressed: () {},
+        )
+      ],
     );
   }
 

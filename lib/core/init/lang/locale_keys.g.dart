@@ -11,6 +11,7 @@ abstract class  LocaleKeys {
   static const onBoard_page3_title = 'onBoard.page3.title';
   static const onBoard_page3_description = 'onBoard.page3.description';
   static const onBoard_page3 = 'onBoard.page3';
+  static const onBoard_skip = 'onBoard.skip';
   static const onBoard = 'onBoard';
 
 }
