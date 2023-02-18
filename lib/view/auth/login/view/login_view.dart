@@ -107,6 +107,9 @@ class LoginView extends StatelessWidget {
                     ),
                     Text(
                       "Sign up",
+                      style: context.textTheme.bodyText1?.copyWith(
+                        color: context.colors.onSecondary,
+                      ),
                     ),
                     Spacer(),
                   ],
