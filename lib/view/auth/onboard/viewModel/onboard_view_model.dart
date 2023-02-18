@@ -16,8 +16,6 @@ abstract class _OnboardViewModelBase with Store, BaseViewModel {
   @override
   void setContext(BuildContext context) => viewModelContext = context;
 
-  List<OnBoardModel> onBoardPages = [];
-
   @observable
   int currentIndex = 0;
 
@@ -26,6 +24,7 @@ abstract class _OnboardViewModelBase with Store, BaseViewModel {
     currentIndex = value;
   }
 
+  List<OnBoardModel> onBoardPages = [];
   @override
   void init() {
     onBoardPages.addAll(

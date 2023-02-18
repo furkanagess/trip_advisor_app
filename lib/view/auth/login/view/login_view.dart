@@ -15,7 +15,24 @@ class LoginView extends StatelessWidget {
       onPageBuilder: (context, value) => Scaffold(
         body: Column(
           children: [
-            Text("data"),
+            Expanded(
+              flex: 5,
+              child: Container(
+                color: Colors.red,
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Container(
+                color: Colors.blue,
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(
+                color: Colors.green,
+              ),
+            ),
           ],
         ),
       ),
