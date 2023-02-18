@@ -27,29 +27,31 @@ class LoginView extends StatelessWidget {
         ),
         body: Padding(
           padding: context.paddingLow,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Row(
-                  children: [
-                    Text(
-                      "Log in",
-                      style: context.textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: context.colors.secondary,
-                      ),
-                    )
-                  ],
+          child: Expanded(
+            flex: 2,
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    children: [
+                      Text(
+                        "Log in",
+                        style: context.textTheme.headline3?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: context.colors.secondary,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 8,
-                child: Container(
-                  color: Colors.blue,
+                TextFormField(
+                  decoration: InputDecoration(),
                 ),
-              ),
-            ],
+                TextFormField(),
+                Spacer()
+              ],
+            ),
           ),
         ),
       ),
