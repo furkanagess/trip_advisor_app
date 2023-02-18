@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trip_advisor_app/core/base/view/base_view.dart';
+import 'package:trip_advisor_app/core/extension/context_extension.dart';
 import 'package:trip_advisor_app/view/auth/login/viewModel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
@@ -13,27 +14,43 @@ class LoginView extends StatelessWidget {
         model.setContext(context);
       },
       onPageBuilder: (context, value) => Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              flex: 5,
-              child: Container(
-                color: Colors.red,
-              ),
+        backgroundColor: context.colors.background,
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.keyboard_backspace_outlined,
+              color: context.iconTheme.color,
+              size: context.iconTheme.size,
             ),
-            Expanded(
-              flex: 3,
-              child: Container(
-                color: Colors.blue,
+          ),
+        ),
+        body: Padding(
+          padding: context.paddingLow,
+          child: Column(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Row(
+                  children: [
+                    Text(
+                      "Log in",
+                      style: context.textTheme.headline2?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: context.colors.secondary,
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.green,
+              Expanded(
+                flex: 8,
+                child: Container(
+                  color: Colors.blue,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

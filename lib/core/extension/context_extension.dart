@@ -27,6 +27,7 @@ extension ThemeExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   TextTheme get textTheme => theme.textTheme;
   ColorScheme get colors => AppThemeLight.instance.theme.colorScheme;
+  IconThemeData get iconTheme => AppThemeLight.instance.theme.iconTheme;
 }
 
 // PADDING ALLL

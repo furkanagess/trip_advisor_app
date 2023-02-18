@@ -30,7 +30,7 @@ class OnboardView extends StatelessWidget {
           padding: context.paddingLow,
           child: Column(
             children: [
-              Spacer(
+              const Spacer(
                 flex: 1,
               ),
               Expanded(

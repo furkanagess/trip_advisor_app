@@ -8,6 +8,7 @@ import 'package:trip_advisor_app/core/init/navigation/navigation_router.dart';
 import 'package:trip_advisor_app/core/init/navigation/navigation_service.dart';
 import 'package:trip_advisor_app/core/init/notifier/app_provider.dart';
 import 'package:trip_advisor_app/core/init/notifier/theme_notifier.dart';
+import 'package:trip_advisor_app/view/auth/login/view/login_view.dart';
 import 'package:trip_advisor_app/view/auth/onboard/view/onboard_view.dart';
 
 void main() {
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
       theme: context.watch<ThemeNotifier>().currentTheme,
-      home: OnboardView(),
+      home: LoginView(),
     );
   }
 }

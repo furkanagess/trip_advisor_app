@@ -13,13 +13,25 @@ class AppThemeLight extends AppTheme {
   @override
   ThemeData get theme => ThemeData.light().copyWith(
         colorScheme: _buildColorScheme,
+        appBarTheme: _appBarTheme,
+        iconTheme: _iconTheme,
+      );
+
+  IconThemeData get _iconTheme => IconThemeData(
+        color: _buildColorScheme.secondary,
+        size: 30,
+      );
+
+  AppBarTheme get _appBarTheme => AppBarTheme(
+        elevation: 0,
+        backgroundColor: _buildColorScheme.background,
       );
 
   ColorScheme get _buildColorScheme => ColorScheme(
         brightness: Brightness.light,
         primary: Colors.blue.shade900,
         onPrimary: Colors.blue,
-        secondary: Colors.black,
+        secondary: Colors.black, // used
         onSecondary: Color(0xFF6c63ff), // used
         error: Colors.red,
         onError: Colors.orange,
