@@ -15,16 +15,6 @@ class LoginView extends StatelessWidget {
       },
       onPageBuilder: (context, value) => Scaffold(
         backgroundColor: context.colors.background,
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.keyboard_backspace_outlined,
-              color: context.iconTheme.color,
-              size: context.iconTheme.size,
-            ),
-          ),
-        ),
         body: Padding(
           padding: context.paddingNormal,
           child: Expanded(
@@ -59,12 +49,14 @@ class LoginView extends StatelessWidget {
                   height: context.dynamicHeight(0.02),
                 ),
                 TextFormField(
+                  obscureText: true,
                   decoration: InputDecoration(
                     labelText: "Password",
                     icon: Icon(
                       Icons.lock_outline_rounded,
                       size: 30,
                     ),
+                    hintText: "Enter your password",
                   ),
                 ),
                 SizedBox(
@@ -73,11 +65,14 @@ class LoginView extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   child: Center(
-                    child: Text(
-                      "LOGIN",
-                      style: context.textTheme.headline5?.copyWith(
-                        color: context.colors.background,
-                        fontWeight: FontWeight.bold,
+                    child: Padding(
+                      padding: context.paddingLow,
+                      child: Text(
+                        "LOGIN",
+                        style: context.textTheme.headline5?.copyWith(
+                          color: context.colors.background,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -105,10 +100,13 @@ class LoginView extends StatelessWidget {
                       "Here for the first time ?   ",
                       style: context.textTheme.bodyText1,
                     ),
-                    Text(
-                      "Sign up",
-                      style: context.textTheme.bodyText1?.copyWith(
-                        color: context.colors.onSecondary,
+                    InkWell(
+                      onTap: () {},
+                      child: Text(
+                        "Sign up",
+                        style: context.textTheme.bodyText1?.copyWith(
+                          color: context.colors.onSecondary,
+                        ),
                       ),
                     ),
                     Spacer(),

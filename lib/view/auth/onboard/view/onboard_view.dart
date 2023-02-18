@@ -27,7 +27,7 @@ class OnboardView extends StatelessWidget {
       onPageBuilder: (BuildContext context, OnboardViewModel viewModel) => Scaffold(
         backgroundColor: context.colors.background,
         body: Padding(
-          padding: context.paddingLow,
+          padding: context.paddingNormal,
           child: Column(
             children: [
               const Spacer(
