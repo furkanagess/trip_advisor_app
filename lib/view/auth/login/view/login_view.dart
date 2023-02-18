@@ -26,7 +26,7 @@ class LoginView extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: context.paddingLow,
+          padding: context.paddingNormal,
           child: Expanded(
             flex: 2,
             child: Column(
@@ -46,10 +46,72 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 TextFormField(
-                  decoration: InputDecoration(),
+                  decoration: InputDecoration(
+                    labelText: "Name",
+                    icon: Icon(
+                      Icons.person_outline_outlined,
+                      size: 30,
+                    ),
+                    hintText: "Enter your name",
+                  ),
                 ),
-                TextFormField(),
-                Spacer()
+                SizedBox(
+                  height: context.dynamicHeight(0.02),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    icon: Icon(
+                      Icons.lock_outline_rounded,
+                      size: 30,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: context.dynamicHeight(0.05),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Center(
+                    child: Text(
+                      "LOGIN",
+                      style: context.textTheme.headline5?.copyWith(
+                        color: context.colors.background,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    padding: context.paddingLow,
+                    shape: StadiumBorder(),
+                    backgroundColor: context.colors.onSecondary,
+                  ),
+                ),
+                SizedBox(
+                  height: context.dynamicHeight(0.03),
+                ),
+                Text(
+                  "Forgot Password ?",
+                  style: context.textTheme.bodyText1,
+                ),
+                SizedBox(
+                  height: context.dynamicHeight(0.03),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Spacer(),
+                    Text(
+                      "Here for the first time ?   ",
+                      style: context.textTheme.bodyText1,
+                    ),
+                    Text(
+                      "Sign up",
+                    ),
+                    Spacer(),
+                  ],
+                ),
+                Spacer(),
               ],
             ),
           ),
