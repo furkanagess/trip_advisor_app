@@ -37,9 +37,9 @@ class LoginView extends StatelessWidget {
                 ),
                 TextFormField(
                   decoration: InputDecoration(
-                    labelText: "Name",
+                    labelText: "Mail",
                     icon: Icon(
-                      Icons.person_outline_outlined,
+                      Icons.mail_outline,
                       size: 30,
                     ),
                     hintText: "Enter your name",
