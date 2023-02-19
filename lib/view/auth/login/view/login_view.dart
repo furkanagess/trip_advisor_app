@@ -42,7 +42,7 @@ class LoginView extends StatelessWidget {
                       Icons.mail_outline,
                       size: 30,
                     ),
-                    hintText: "Enter your name",
+                    hintText: "Enter your  mail",
                   ),
                 ),
                 SizedBox(
