@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trip_advisor_app/core/base/view/base_view.dart';
+import 'package:trip_advisor_app/core/constants/svg/svg_constants.dart';
 import 'package:trip_advisor_app/core/extension/context_extension.dart';
 import 'package:trip_advisor_app/view/auth/login/viewModel/login_view_model.dart';
 
@@ -17,88 +19,84 @@ class LoginView extends StatelessWidget {
         backgroundColor: context.colors.background,
         body: Padding(
           padding: context.paddingNormal,
-          child: Expanded(
-            flex: 2,
-            child: Column(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Row(
-                    children: [
-                      Text(
-                        "Log in",
-                        style: context.textTheme.headline3?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: context.colors.secondary,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                TextFormField(
+          child: Column(
+            children: [
+              Spacer(
+                flex: 2,
+              ),
+              Expanded(
+                flex: 5,
+                child: SvgPicture.asset(SVGConstants.instance.welcome),
+              ),
+              Expanded(
+                flex: 2,
+                child: TextFormField(
+                  cursorColor: context.colors.onSecondary,
                   decoration: InputDecoration(
+                    focusColor: context.colors.onSecondary,
                     labelText: "Mail",
                     icon: Icon(
                       Icons.mail_outline,
                       size: 30,
+                      color: context.colors.onSecondary,
                     ),
-                    hintText: "Enter your  mail",
                   ),
                 ),
-                SizedBox(
-                  height: context.dynamicHeight(0.02),
-                ),
-                TextFormField(
+              ),
+              Expanded(
+                flex: 2,
+                child: TextFormField(
+                  cursorColor: context.colors.onSecondary,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: "Password",
                     icon: Icon(
                       Icons.lock_outline_rounded,
                       size: 30,
+                      color: context.colors.onSecondary,
                     ),
-                    hintText: "Enter your password",
                   ),
                 ),
-                SizedBox(
-                  height: context.dynamicHeight(0.05),
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Center(
-                    child: Padding(
-                      padding: context.paddingLow,
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: context.paddingNormal,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Center(
                       child: Text(
                         "LOGIN",
-                        style: context.textTheme.headline5?.copyWith(
+                        style: context.textTheme.headline6?.copyWith(
                           color: context.colors.background,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: context.paddingLow,
-                    shape: StadiumBorder(),
-                    backgroundColor: context.colors.onSecondary,
+                    style: ElevatedButton.styleFrom(
+                      padding: context.paddingLow,
+                      shape: StadiumBorder(),
+                      backgroundColor: context.colors.onSecondary,
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: context.dynamicHeight(0.03),
-                ),
-                Text(
+              ),
+              Expanded(
+                flex: 1,
+                child: Text(
                   "Forgot Password ?",
-                  style: context.textTheme.bodyText1,
+                  style: context.textTheme.bodyText2,
                 ),
-                SizedBox(
-                  height: context.dynamicHeight(0.03),
-                ),
-                Row(
+              ),
+              Expanded(
+                flex: 1,
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Spacer(),
                     Text(
                       "Here for the first time ?   ",
-                      style: context.textTheme.bodyText1,
+                      style: context.textTheme.bodyText2,
                     ),
                     InkWell(
                       onTap: () {},
@@ -106,15 +104,16 @@ class LoginView extends StatelessWidget {
                         "Sign up",
                         style: context.textTheme.bodyText1?.copyWith(
                           color: context.colors.onSecondary,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                     Spacer(),
                   ],
                 ),
-                Spacer(),
-              ],
-            ),
+              ),
+              Spacer(),
+            ],
           ),
         ),
       ),

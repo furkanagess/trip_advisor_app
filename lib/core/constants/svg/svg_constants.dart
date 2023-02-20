@@ -8,4 +8,5 @@ class SVGConstants {
   String get travel => toSVG("travel");
   String get travelExplore => toSVG("travel_explore");
   String get travelWorld => toSVG("travel_world");
+  String get welcome => toSVG("welcome");
 }
