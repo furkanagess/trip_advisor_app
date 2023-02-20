@@ -15,5 +15,13 @@
         },
         "skip":"Skip"
     
+    },
+    "login":{
+        "mail":"Mail",
+        "password":"Password",
+        "login":"LOGIN",
+        "forgot":"Forgot Password ?",
+        "first":"Here for the first time ?   ",
+        "signup":"Sign up"
     }
 }
