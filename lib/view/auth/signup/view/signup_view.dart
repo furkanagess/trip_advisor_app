@@ -18,7 +18,7 @@ class SignupView extends StatelessWidget {
       onModelReady: (model) {
         model.setContext(context);
       },
-      onPageBuilder: (context, value) => Scaffold(
+      onPageBuilder: (BuildContext context, SignUpViewModel viewModel) => Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: context.colors.background,
         body: Padding(
@@ -34,23 +34,25 @@ class SignupView extends StatelessWidget {
               ),
               Expanded(
                 flex: 2,
+                child: buildNameTextField(context),
+              ),
+              Expanded(
+                flex: 2,
                 child: buildMailTextField(context),
               ),
+              // Add dynamic eye icon for obscure password using Mobx
               Expanded(
                 flex: 2,
                 child: buildPasswordTextField(context),
               ),
+              // When click to signupButton it will show up a alertDialog about Succesfully Register with Lottie.
               Expanded(
                 flex: 2,
-                child: loginButton(context),
+                child: signupButton(context),
               ),
               Expanded(
                 flex: 1,
-                child: forgotText(context),
-              ),
-              Expanded(
-                flex: 1,
-                child: signupRow(context),
+                child: loginRow(context, viewModel),
               ),
               Spacer(),
             ],
@@ -60,19 +62,21 @@ class SignupView extends StatelessWidget {
     );
   }
 
-  Row signupRow(BuildContext context) {
+  Row loginRow(BuildContext context, SignUpViewModel viewModel) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Spacer(),
         Text(
-          LocaleKeys.login_first.locale,
+          LocaleKeys.signup_account.locale,
           style: context.textTheme.bodyText2,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            viewModel.navigateToLogin();
+          },
           child: Text(
-            LocaleKeys.login_signup.locale,
+            LocaleKeys.login_login.locale,
             style: context.textTheme.bodyText1?.copyWith(
               color: context.colors.onSecondary,
               fontWeight: FontWeight.bold,
@@ -84,21 +88,14 @@ class SignupView extends StatelessWidget {
     );
   }
 
-  Text forgotText(BuildContext context) {
-    return Text(
-      LocaleKeys.login_forgot.locale,
-      style: context.textTheme.bodyText2,
-    );
-  }
-
-  Padding loginButton(BuildContext context) {
+  Padding signupButton(BuildContext context) {
     return Padding(
       padding: context.paddingNormal,
       child: ElevatedButton(
         onPressed: () {},
         child: Center(
           child: Text(
-            LocaleKeys.login_login.locale,
+            LocaleKeys.login_signup.locale,
             style: context.textTheme.headline6?.copyWith(
               color: context.colors.background,
               fontWeight: FontWeight.bold,
@@ -130,6 +127,21 @@ class SignupView extends StatelessWidget {
     );
   }
 
+  TextFormField buildNameTextField(BuildContext context) {
+    return TextFormField(
+      cursorColor: context.colors.onSecondary,
+      decoration: InputDecoration(
+        focusColor: context.colors.onSecondary,
+        labelText: LocaleKeys.signup_name.locale,
+        icon: Icon(
+          Icons.person_outline_outlined,
+          size: 30,
+          color: context.colors.onSecondary,
+        ),
+      ),
+    );
+  }
+
   TextFormField buildMailTextField(BuildContext context) {
     return TextFormField(
       cursorColor: context.colors.onSecondary,
@@ -145,5 +157,5 @@ class SignupView extends StatelessWidget {
     );
   }
 
-  SvgPicture buildSVG() => SvgPicture.asset(SVGConstants.instance.welcome);
+  SvgPicture buildSVG() => SvgPicture.asset(SVGConstants.instance.mobileLogin);
 }

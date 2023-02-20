@@ -10,6 +10,9 @@ import 'package:trip_advisor_app/core/init/notifier/app_provider.dart';
 import 'package:trip_advisor_app/core/init/notifier/theme_notifier.dart';
 import 'package:trip_advisor_app/view/auth/login/view/login_view.dart';
 import 'package:trip_advisor_app/view/auth/onboard/view/onboard_view.dart';
+import 'package:trip_advisor_app/view/auth/password/view/password_view.dart';
+import 'package:trip_advisor_app/view/auth/signup/view/signup_view.dart';
+import 'package:trip_advisor_app/view/auth/signup/viewModel/signup_view_model.dart';
 
 void main() {
   LocaleManager.prefrencesInit();
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
       theme: context.watch<ThemeNotifier>().currentTheme,
-      home: LoginView(),
+      home: PasswordView(),
     );
   }
 }

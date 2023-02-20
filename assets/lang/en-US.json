@@ -19,9 +19,15 @@
     "login":{
         "mail":"Mail",
         "password":"Password",
-        "login":"LOGIN",
+        "login":"Login",
         "forgot":"Forgot Password ?",
         "first":"Here for the first time ?   ",
         "signup":"Sign up"
-    }
+    },
+    "signup":{
+        "name":"Name",
+        "account":"Already have an account ?  "
+    },
+    "reset":"Reset Password"
+
 }

@@ -18,7 +18,7 @@ class LoginView extends StatelessWidget {
       onModelReady: (model) {
         model.setContext(context);
       },
-      onPageBuilder: (context, value) => Scaffold(
+      onPageBuilder: (BuildContext context, LoginViewModel viewModel) => Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: context.colors.background,
         body: Padding(
@@ -46,11 +46,11 @@ class LoginView extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: forgotText(context),
+                child: forgotText(context, viewModel),
               ),
               Expanded(
                 flex: 1,
-                child: signupRow(context),
+                child: signupRow(context, viewModel),
               ),
               Spacer(),
             ],
@@ -60,7 +60,7 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Row signupRow(BuildContext context) {
+  Row signupRow(BuildContext context, LoginViewModel viewModel) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -70,7 +70,9 @@ class LoginView extends StatelessWidget {
           style: context.textTheme.bodyText2,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            viewModel.navigateToSignup();
+          },
           child: Text(
             LocaleKeys.login_signup.locale,
             style: context.textTheme.bodyText1?.copyWith(
@@ -84,10 +86,18 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Text forgotText(BuildContext context) {
-    return Text(
-      LocaleKeys.login_forgot.locale,
-      style: context.textTheme.bodyText2,
+  Widget forgotText(BuildContext context, LoginViewModel viewModel) {
+    return InkWell(
+      onTap: () {
+        viewModel.navigateToPassword();
+      },
+      child: Text(
+        LocaleKeys.login_forgot.locale,
+        style: context.textTheme.bodyText1?.copyWith(
+          color: context.colors.onSecondary,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 

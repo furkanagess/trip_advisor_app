@@ -20,5 +20,9 @@ abstract class  LocaleKeys {
   static const login_first = 'login.first';
   static const login_signup = 'login.signup';
   static const login = 'login';
+  static const signup_name = 'signup.name';
+  static const signup_account = 'signup.account';
+  static const signup = 'signup';
+  static const reset = 'reset';
 
 }

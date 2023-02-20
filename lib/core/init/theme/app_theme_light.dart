@@ -18,7 +18,7 @@ class AppThemeLight extends AppTheme {
       );
 
   IconThemeData get _iconTheme => IconThemeData(
-        color: _buildColorScheme.secondary,
+        color: _buildColorScheme.onSecondary,
         size: 30,
       );
 
