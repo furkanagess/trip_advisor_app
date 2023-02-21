@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:trip_advisor_app/core/base/view/base_view.dart';
@@ -52,7 +53,7 @@ class PasswordView extends StatelessWidget {
               // Add dynamic eye icon for obscure password using Mobx
               Expanded(
                 flex: 2,
-                child: buildPasswordTextField(context),
+                child: buildPasswordTextField(context, viewModel),
               ),
               // When click to resetButton it will show up a alertDialog about Succesfully Reset Password with Lottie.
               Expanded(
@@ -74,7 +75,11 @@ class PasswordView extends StatelessWidget {
       padding: context.paddingNormal,
       child: ElevatedButton(
         onPressed: () {
-          viewModel.showSuccessAlert(context);
+          viewModel.showSuccessAlert(
+            context,
+            text: LocaleKeys.alert_succes_password_text.locale,
+            title: LocaleKeys.alert_succes_password_title.locale,
+          );
         },
         child: Center(
           child: Text(
@@ -95,19 +100,34 @@ class PasswordView extends StatelessWidget {
     );
   }
 
-  Widget buildPasswordTextField(BuildContext context) {
-    return TextFormField(
-      cursorColor: context.colors.onSecondary,
-      obscureText: true,
-      decoration: InputDecoration(
-        labelText: LocaleKeys.login_password.locale,
-        icon: Icon(
-          Icons.lock_outline_rounded,
-          size: 30,
-          color: context.colors.onSecondary,
+  Widget buildPasswordTextField(BuildContext context, PasswordViewModel viewModel) {
+    return Observer(builder: (_) {
+      return TextFormField(
+        cursorColor: context.colors.onSecondary,
+        obscureText: viewModel.isLockOpen,
+        decoration: InputDecoration(
+          suffixIcon: InkWell(
+            onTap: () {
+              viewModel.isLockChange();
+            },
+            child: Observer(
+              builder: (_) {
+                return Icon(
+                  viewModel.isLockOpen ? Icons.visibility_off : Icons.visibility,
+                  color: context.iconTheme.color,
+                );
+              },
+            ),
+          ),
+          labelText: LocaleKeys.login_password.locale,
+          icon: Icon(
+            Icons.lock_outline_rounded,
+            size: 30,
+            color: context.colors.onSecondary,
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   SvgPicture buildSVG() => SvgPicture.asset(SVGConstants.instance.forgotPassword);

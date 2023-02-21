@@ -21,12 +21,19 @@ abstract class _PasswordViewModelBase with Store, BaseViewModel {
     navigation.navigateToPage(path: NavigationConstants.LOGIN_VIEW);
   }
 
-  void showSuccessAlert(BuildContext context) {
+  @observable
+  bool isLockOpen = false;
+  @action
+  void isLockChange() {
+    isLockOpen = !isLockOpen;
+  }
+
+  void showSuccessAlert(BuildContext context, {required String text, required String title}) {
     QuickAlert.show(
       type: QuickAlertType.success,
       context: context,
-      text: LocaleKeys.alert_succes_password_text.locale,
-      title: LocaleKeys.alert_succes_password_title.locale,
+      text: text,
+      title: title,
       backgroundColor: context.colors.background,
       textColor: context.colors.secondary,
       titleColor: context.colors.secondary,

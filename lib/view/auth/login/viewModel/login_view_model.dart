@@ -17,6 +17,13 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
     navigation.navigateToPage(path: NavigationConstants.SIGNUP_VIEW);
   }
 
+  @observable
+  bool isLockOpen = false;
+  @action
+  void isLockChange() {
+    isLockOpen = !isLockOpen;
+  }
+
   void navigateToPassword() {
     navigation.navigateToPage(path: NavigationConstants.PASSWORD_VIEW);
   }

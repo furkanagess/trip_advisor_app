@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trip_advisor_app/core/base/view/base_view.dart';
 import 'package:trip_advisor_app/core/constants/svg/svg_constants.dart';
@@ -38,7 +39,7 @@ class LoginView extends StatelessWidget {
               ),
               Expanded(
                 flex: 2,
-                child: buildPasswordTextField(context),
+                child: buildPasswordTextField(context, viewModel),
               ),
               Expanded(
                 flex: 2,
@@ -125,19 +126,34 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  TextFormField buildPasswordTextField(BuildContext context) {
-    return TextFormField(
-      cursorColor: context.colors.onSecondary,
-      obscureText: true,
-      decoration: InputDecoration(
-        labelText: LocaleKeys.login_password.locale,
-        icon: Icon(
-          Icons.lock_outline_rounded,
-          size: 30,
-          color: context.colors.onSecondary,
+  Widget buildPasswordTextField(BuildContext context, LoginViewModel viewModel) {
+    return Observer(builder: (_) {
+      return TextFormField(
+        cursorColor: context.colors.onSecondary,
+        obscureText: viewModel.isLockOpen,
+        decoration: InputDecoration(
+          suffixIcon: InkWell(
+            onTap: () {
+              viewModel.isLockChange();
+            },
+            child: Observer(
+              builder: (_) {
+                return Icon(
+                  viewModel.isLockOpen ? Icons.visibility_off : Icons.visibility,
+                  color: context.iconTheme.color,
+                );
+              },
+            ),
+          ),
+          labelText: LocaleKeys.login_password.locale,
+          icon: Icon(
+            Icons.lock_outline_rounded,
+            size: 30,
+            color: context.colors.onSecondary,
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   TextFormField buildMailTextField(BuildContext context) {
