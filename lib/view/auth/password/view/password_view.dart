@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:trip_advisor_app/core/base/view/base_view.dart';
 import 'package:trip_advisor_app/core/extension/context_extension.dart';
 import 'package:trip_advisor_app/core/extension/string_extension.dart';
@@ -56,7 +57,7 @@ class PasswordView extends StatelessWidget {
               // When click to resetButton it will show up a alertDialog about Succesfully Reset Password with Lottie.
               Expanded(
                 flex: 2,
-                child: resetButton(context),
+                child: resetButton(context, viewModel),
               ),
 
               Spacer(
@@ -69,11 +70,13 @@ class PasswordView extends StatelessWidget {
     );
   }
 
-  Padding resetButton(BuildContext context) {
+  Padding resetButton(BuildContext context, PasswordViewModel viewModel) {
     return Padding(
       padding: context.paddingNormal,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          viewModel.showSuccessAlert(context);
+        },
         child: Center(
           child: Text(
             LocaleKeys.reset.locale,

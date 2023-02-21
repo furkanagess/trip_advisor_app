@@ -24,5 +24,13 @@ abstract class  LocaleKeys {
   static const signup_account = 'signup.account';
   static const signup = 'signup';
   static const reset = 'reset';
+  static const alert_succes_register_text = 'alert.succes.register.text';
+  static const alert_succes_register_title = 'alert.succes.register.title';
+  static const alert_succes_register = 'alert.succes.register';
+  static const alert_succes_password_text = 'alert.succes.password.text';
+  static const alert_succes_password_title = 'alert.succes.password.title';
+  static const alert_succes_password = 'alert.succes.password';
+  static const alert_succes = 'alert.succes';
+  static const alert = 'alert';
 
 }

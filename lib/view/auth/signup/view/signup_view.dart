@@ -48,7 +48,7 @@ class SignupView extends StatelessWidget {
               // When click to signupButton it will show up a alertDialog about Succesfully Register with Lottie.
               Expanded(
                 flex: 2,
-                child: signupButton(context),
+                child: signupButton(context, viewModel),
               ),
               Expanded(
                 flex: 1,
@@ -88,11 +88,13 @@ class SignupView extends StatelessWidget {
     );
   }
 
-  Padding signupButton(BuildContext context) {
+  Padding signupButton(BuildContext context, SignUpViewModel viewModel) {
     return Padding(
       padding: context.paddingNormal,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          viewModel.showSuccessAlert(context);
+        },
         child: Center(
           child: Text(
             LocaleKeys.login_signup.locale,

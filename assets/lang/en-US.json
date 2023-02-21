@@ -28,6 +28,18 @@
         "name":"Name",
         "account":"Already have an account ?  "
     },
-    "reset":"Reset Password"
+    "reset":"Reset Password",
+    "alert":{
+        "succes":{
+            "register":{
+                "text":"You can go back to Login page",
+                "title":"Successfully Register"
+            },
+            "password":{
+                "text":"Please check your mail.",
+                "title":"Password Successfully Reset"
+            }
+        }
+    }
 
 }
