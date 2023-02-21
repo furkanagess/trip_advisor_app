@@ -48,12 +48,13 @@ abstract class _OnboardViewModelBase with Store, BaseViewModel {
     );
   }
 
-  Future<void> completeOnboard() async {
+  Future<void> completeToOnBoard() async {
     await localeManager.setBoolValue(PreferencesKeys.IS_FIRST_APP, true);
-    navigation.navigateToPageClear(path: NavigationConstants.LOGIN_VIEW);
-  }
 
-  void navigateToLogin() {
-    navigation.navigateToPage(path: NavigationConstants.LOGIN_VIEW);
+    if (navigation.navigatorKey.currentState!.canPop()) {
+      navigation.navigatorKey.currentState!.pop();
+    } else {
+      await navigation.navigateToPageClear(path: NavigationConstants.LOGIN_VIEW);
+    }
   }
 }

@@ -13,6 +13,8 @@ import 'package:trip_advisor_app/core/widget/avatar/onboard_circle.dart';
 import 'package:trip_advisor_app/view/auth/onboard/model/onboard_model.dart';
 import 'package:trip_advisor_app/view/auth/onboard/viewModel/onboard_view_model.dart';
 
+import '../../../../core/constants/navigation/navigation_constants.dart';
+
 class OnboardView extends StatelessWidget {
   const OnboardView({super.key});
 
@@ -102,7 +104,7 @@ class OnboardView extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        viewModel.navigateToLogin();
+        viewModel.completeToOnBoard();
       },
     );
   }
