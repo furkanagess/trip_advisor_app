@@ -59,7 +59,6 @@ class PasswordView extends StatelessWidget {
                 flex: 2,
                 child: resetButton(context, viewModel),
               ),
-
               Spacer(
                 flex: 2,
               ),
